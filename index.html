@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Otvorena Mreža - Budi dobar susjed, otvori svoju mrežu</title>
+  <meta name="description" content="Slobodna i otvorena bežična mreža za sve. Pridruži se zajednici koja vjeruje da internet treba biti dostupan svima.">
+  <meta property="og:title" content="Otvorena Mreža">
+  <meta property="og:description" content="Budi dobar susjed, otvori svoju mrežu. Slobodna i otvorena bežična mreža za sve.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #22c55e;
+      --primary-dark: #16a34a;
+      --primary-light: #dcfce7;
+      --secondary: #0ea5e9;
+      --secondary-light: #e0f2fe;
+      --dark: #1e293b;
+      --gray: #64748b;
+      --gray-light: #94a3b8;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --radius: 16px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.06);
+      --shadow-lg: 0 10px 40px rgba(0,0,0,0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── Navigation ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      z-index: 1000;
+      padding: 14px 0;
+      transition: box-shadow 0.3s;
+    }
+
+    nav.scrolled {
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span {
+      color: var(--dark);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--dark);
+      transition: all 0.3s;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(34,197,94,0.3);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-white {
+      background: white;
+      color: var(--primary);
+      padding: 16px 36px;
+      font-size: 1.05rem;
+    }
+
+    .btn-white:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(150deg, var(--primary-light) 0%, var(--white) 40%, var(--secondary-light) 100%);
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(34,197,94,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-content h1 .highlight {
+      color: var(--primary);
+      position: relative;
+    }
+
+    .hero-content .tagline {
+      font-size: 1.25rem;
+      color: var(--gray);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-visual svg {
+      width: 100%;
+      max-width: 460px;
+      height: auto;
+    }
+
+    /* Pulse animation for center node */
+    @keyframes pulse {
+      0%, 100% { r: 22; opacity: 1; }
+      50% { r: 26; opacity: 0.8; }
+    }
+
+    @keyframes dash {
+      to { stroke-dashoffset: -20; }
+    }
+
+    .node-center {
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .connection-animated {
+      stroke-dasharray: 8 4;
+      animation: dash 2s linear infinite;
+    }
+
+    /* ─── Stats ─── */
+    .stats {
+      padding: 80px 0;
+      background: var(--white);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+    }
+
+    .stat-item p {
+      color: var(--gray);
+      margin-top: 6px;
+      font-size: 0.95rem;
+    }
+
+    /* ─── About ─── */
+    .about {
+      padding: 100px 0;
+      background: var(--light);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 64px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-header p {
+      color: var(--gray);
+      font-size: 1.1rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      padding: 36px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--primary-light);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .feature-icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--primary);
+    }
+
+    .feature-icon.blue {
+      background: var(--secondary-light);
+    }
+
+    .feature-icon.blue svg {
+      color: var(--secondary);
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .feature-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* ─── How It Works ─── */
+    .how-it-works {
+      padding: 100px 0;
+      background: var(--white);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-light), var(--primary), var(--primary-light));
+      z-index: 0;
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 12px rgba(34,197,94,0.3);
+    }
+
+    .step h4 {
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .step p {
+      color: var(--gray);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ─── Contribute ─── */
+    .contribute {
+      padding: 100px 0;
+      background: var(--light);
+    }
+
+    .contribute-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .contribute-card {
+      background: var(--white);
+      padding: 36px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .contribute-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .contribute-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .contribute-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .contribute-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* ─── Testimonials ─── */
+    .testimonials {
+      padding: 100px 0;
+      background: var(--white);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .testimonial-card {
+      background: var(--light);
+      padding: 32px;
+      border-radius: var(--radius);
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '\201C';
+      font-size: 4rem;
+      color: var(--primary);
+      opacity: 0.3;
+      position: absolute;
+      top: 12px;
+      left: 24px;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      color: var(--dark);
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+      padding-top: 24px;
+    }
+
+    .testimonial-author {
+      color: var(--gray);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* ─── Map ─── */
+    .map-section {
+      padding: 100px 0;
+      background: var(--dark);
+      color: white;
+    }
+
+    .map-section .section-tag {
+      background: rgba(34,197,94,0.2);
+    }
+
+    .map-section .section-header h2 {
+      color: white;
+    }
+
+    .map-section .section-header p {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .map-container {
+      background: rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .map-container svg {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    .map-container p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .map-container .btn {
+      background: var(--primary);
+      color: white;
+      font-size: 0.9rem;
+      padding: 10px 24px;
+    }
+
+    /* ─── FAQ ─── */
+    .faq {
+      padding: 100px 0;
+      background: var(--light);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--white);
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+      cursor: pointer;
+      transition: box-shadow 0.3s;
+    }
+
+    .faq-item:hover {
+      box-shadow: var(--shadow);
+    }
+
+    .faq-question {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    .faq-q-icon {
+      background: var(--primary);
+      color: white;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .faq-item p {
+      color: var(--gray);
+      padding-left: 40px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ─── CTA ─── */
+    .cta {
+      padding: 100px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, #15803d 100%);
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+
+    .cta p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 36px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 64px 0 32px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-about .logo {
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .footer-about p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .footer-links h4 {
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      display: block;
+      padding: 5px 0;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.85rem;
+    }
+
+    .footer-bottom a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-bottom a:hover {
+      color: var(--primary);
+    }
+
+    /* ─── Mobile Menu ─── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--primary);
+    }
+
+    .mobile-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--dark);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 1024px) {
+      .hero-content h1 {
+        font-size: 2.75rem;
+      }
+
+      .features-grid,
+      .contribute-grid,
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+
+      .hero-content h1 {
+        font-size: 2.25rem;
+      }
+
+      .hero-content .tagline {
+        font-size: 1.1rem;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-visual svg {
+        max-width: 300px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .stat-item h3 {
+        font-size: 2rem;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+
+      .features-grid,
+      .contribute-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      .steps::before {
+        display: none;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+
+      .cta h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content h1 {
+        font-size: 1.85rem;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="container">
+      <a href="#" class="logo">Otvorena<span>Mreža</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">O projektu</a></li>
+        <li><a href="#how">Kako funkcionira</a></li>
+        <li><a href="#contribute">Uključi se</a></li>
+        <li><a href="#map">Karta</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="toggleMenu()">&times;</button>
+    <a href="#about" onclick="toggleMenu()">O projektu</a>
+    <a href="#how" onclick="toggleMenu()">Kako funkcionira</a>
+    <a href="#contribute" onclick="toggleMenu()">Uključi se</a>
+    <a href="#map" onclick="toggleMenu()">Karta</a>
+    <a href="#faq" onclick="toggleMenu()">FAQ</a>
+    <a href="#contact" onclick="toggleMenu()">Kontakt</a>
+    <a href="#join" class="btn btn-primary" onclick="toggleMenu()">Priključi se</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Budi dobar susjed,<br><span class="highlight">otvori svoju mrežu</span></h1>
+        <p class="tagline">Slobodna i otvorena bežična mreža za sve. Pridruži se zajednici koja vjeruje da internet treba biti dostupan svima.</p>
+        <div class="hero-buttons">
+          <a href="#join" class="btn btn-primary">Priključi se mreži</a>
+          <a href="#about" class="btn btn-outline">Saznaj više</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Outer ring -->
+          <circle cx="200" cy="200" r="170" stroke="#22c55e" stroke-width="1" stroke-dasharray="4 6" opacity="0.2"/>
+          <circle cx="200" cy="200" r="130" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.3"/>
+          <circle cx="200" cy="200" r="85" stroke="#22c55e" stroke-width="2" opacity="0.15"/>
+
+          <!-- Animated connections -->
+          <line x1="200" y1="200" x2="110" y2="130" stroke="#22c55e" stroke-width="2" class="connection-animated" opacity="0.4"/>
+          <line x1="200" y1="200" x2="290" y2="130" stroke="#22c55e" stroke-width="2" class="connection-animated" opacity="0.4"/>
+          <line x1="200" y1="200" x2="140" y2="300" stroke="#22c55e" stroke-width="2" class="connection-animated" opacity="0.4"/>
+          <line x1="200" y1="200" x2="260" y2="300" stroke="#22c55e" stroke-width="2" class="connection-animated" opacity="0.4"/>
+          <line x1="200" y1="200" x2="330" y2="220" stroke="#22c55e" stroke-width="2" class="connection-animated" opacity="0.4"/>
+          <line x1="200" y1="200" x2="70" y2="220" stroke="#22c55e" stroke-width="2" class="connection-animated" opacity="0.4"/>
+          <line x1="200" y1="200" x2="200" y2="60" stroke="#22c55e" stroke-width="2" class="connection-animated" opacity="0.4"/>
+          <line x1="200" y1="200" x2="200" y2="340" stroke="#22c55e" stroke-width="2" class="connection-animated" opacity="0.4"/>
+
+          <!-- Peer-to-peer connections -->
+          <line x1="110" y1="130" x2="200" y2="60" stroke="#0ea5e9" stroke-width="1" opacity="0.25"/>
+          <line x1="290" y1="130" x2="330" y2="220" stroke="#0ea5e9" stroke-width="1" opacity="0.25"/>
+          <line x1="70" y1="220" x2="140" y2="300" stroke="#0ea5e9" stroke-width="1" opacity="0.25"/>
+          <line x1="260" y1="300" x2="330" y2="220" stroke="#0ea5e9" stroke-width="1" opacity="0.25"/>
+          <line x1="200" y1="60" x2="290" y2="130" stroke="#0ea5e9" stroke-width="1" opacity="0.25"/>
+
+          <!-- Outer nodes -->
+          <circle cx="110" cy="130" r="12" fill="#0ea5e9" opacity="0.9"/>
+          <circle cx="290" cy="130" r="12" fill="#0ea5e9" opacity="0.9"/>
+          <circle cx="140" cy="300" r="10" fill="#0ea5e9" opacity="0.8"/>
+          <circle cx="260" cy="300" r="10" fill="#0ea5e9" opacity="0.8"/>
+          <circle cx="330" cy="220" r="11" fill="#0ea5e9" opacity="0.85"/>
+          <circle cx="70" cy="220" r="11" fill="#0ea5e9" opacity="0.85"/>
+          <circle cx="200" cy="60" r="10" fill="#0ea5e9" opacity="0.8"/>
+          <circle cx="200" cy="340" r="10" fill="#0ea5e9" opacity="0.8"/>
+
+          <!-- Center node (pulsing) -->
+          <circle cx="200" cy="200" r="22" fill="#22c55e" class="node-center"/>
+
+          <!-- WiFi icon in center -->
+          <path d="M192 205 a 8 8 0 0 1 16 0" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M187 200 a 13 13 0 0 1 26 0" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M182 195 a 18 18 0 0 1 36 0" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="200" cy="210" r="2.5" fill="white"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3>50,000+</h3>
+          <p>Dnevnih korisnika</p>
+        </div>
+        <div class="stat-item">
+          <h3>200+</h3>
+          <p>Aktivnih nodova</p>
+        </div>
+        <div class="stat-item">
+          <h3>15+</h3>
+          <p>Godina iskustva</p>
+        </div>
+        <div class="stat-item">
+          <h3>100%</h3>
+          <p>Besplatno i otvoreno</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">O projektu</span>
+        <h2>Što je Otvorena Mreža?</h2>
+        <p>Projekt čine ljudi otvorena uma koji žele omogućiti slobodan pristup internetu i bolje povezati lokalnu zajednicu.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+            </svg>
+          </div>
+          <h3>Slobodan pristup</h3>
+          <p>Internet je osnovno ljudsko pravo. Dijelimo ga s onima koji nemaju - besplatno, sigurno i bez ograničenja.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon blue">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3>Zajednica</h3>
+          <p>Organizirani kao open-source projekt. Naglasak je na meritokraciji i doprinosu - svatko može sudjelovati.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+            </svg>
+          </div>
+          <h3>Otvorena tehnologija</h3>
+          <p>Koristimo NodeWatcher platformu - open-source softver koji automatizira upravljanje mrežom i nodovima.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon blue">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <h3>Sigurnost i privatnost</h3>
+          <p>Sav promet ide kroz VPN tunel do centralnog servera. Vaša IP adresa ostaje zaštićena.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3>Automatizacija</h3>
+          <p>NodeWatcher generira prilagođeni firmware za vaš uređaj. Uključite router u struju i gotovo!</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon blue">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3>Globalni pokret</h3>
+          <p>Ideja o slobodnim mrežama kruži svijetom. Postoji mnogo sličnih projekata - dio smo globalnog pokreta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works" id="how">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Postavljanje</span>
+        <h2>Kako se priključiti?</h2>
+        <p>Ne očekuje se nikakvo predznanje osim uključivanja uređaja u struju. Četiri jednostavna koraka.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h4>Nabavi router</h4>
+          <p>Bilo koji uređaj koji podržava OpenWrt firmware. Preporučujemo TP-Link ili Ubiquiti za početak.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h4>Registriraj se</h4>
+          <p>Kreiraj račun na NodeWatcher platformi i dodaj svoj novi node u sustav.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h4>Instaliraj firmware</h4>
+          <p>NodeWatcher generira prilagođeni firmware za točno tvoj uređaj. Samo preuzmi i instaliraj.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h4>Uključi i dijeli!</h4>
+          <p>Uključi router u struju i automatski postaneš dio otvorene mreže. Gotovo!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contribute -->
+  <section class="contribute" id="contribute">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Uključi se</span>
+        <h2>Kako možeš doprinijeti?</h2>
+        <p>Primamo sve koji se žele uključiti u bilo koji segment projekta.</p>
+      </div>
+      <div class="contribute-grid">
+        <div class="contribute-card">
+          <div class="contribute-icon">&#128225;</div>
+          <h3>Postavi novu točku</h3>
+          <p>Nabavi router, postavi ga i podijeli internet sa susjedstvom. Najvrjedniji doprinos projektu!</p>
+        </div>
+        <div class="contribute-card">
+          <div class="contribute-icon">&#128187;</div>
+          <h3>Razvoj softvera</h3>
+          <p>Tehničke osobe mogu pomoći u razvoju NodeWatcher platforme i alata otvorenog koda.</p>
+        </div>
+        <div class="contribute-card">
+          <div class="contribute-icon">&#128226;</div>
+          <h3>Širi dobar glas</h3>
+          <p>Pričaj o projektu, dijeli na društvenim mrežama, organiziraj lokalne meetupe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Zajednica</span>
+        <h2>Što drugi kažu</h2>
+        <p>Glasovi iz zajednice koja vjeruje u otvoreni internet.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p>Internet bi trebao biti osnovno ljudsko pravo! Otvorena Mreža to čini mogućim u mom susjedstvu.</p>
+          <span class="testimonial-author">Korisnik iz Zagreba</span>
+        </div>
+        <div class="testimonial-card">
+          <p>Zašto ne bismo besplatno podijelili internet sa svima? Postavljanje je bilo jednostavnije nego što sam očekivao.</p>
+          <span class="testimonial-author">Volonter iz Osijeka</span>
+        </div>
+        <div class="testimonial-card">
+          <p>Ideja o slobodnim mrežama postoji odavno, ali Otvorena Mreža ju je konačno učinila pristupačnom svima.</p>
+          <span class="testimonial-author">Operator noda iz Rijeke</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map -->
+  <section class="map-section" id="map">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Mreža</span>
+        <h2>Karta mreže</h2>
+        <p>Pogledaj gdje se nalaze aktivni nodovi i proširi mrežu u svom susjedstvu.</p>
+      </div>
+      <div class="map-container">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+        </svg>
+        <p>Interaktivna karta s NodeWatcher integracijom</p>
+        <a href="https://nodes.otvorenamreza.eu" class="btn" target="_blank" rel="noopener">Otvori kartu nodova</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Pitanja</span>
+        <h2>Česta pitanja</h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q-icon">?</span>
+            <span>Zašto bih dijelio svoj internet?</span>
+          </div>
+          <p>Učinite dobro djelo za vaše susjedstvo i lokalnu zajednicu. Podijelite vaš višak s onima koji nemaju. Nije cilj nikoga nagovarati - želimo omogućiti onima koji razmišljaju slično da to naprave jednostavno i sigurno.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q-icon">?</span>
+            <span>Jesam li odgovoran za promet drugih?</span>
+          </div>
+          <p>Ne. Korisnicima se ne daje izravan izlaz s vašeg routera nego prolaz do centralnog servera kroz VPN tunel. IP adresa je od centralnog servera, ne vaša. Odgovornost je na pružatelju usluge.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q-icon">?</span>
+            <span>Hoće li mi se usporiti veza?</span>
+          </div>
+          <p>Vi ste administrator svoje točke i sami birate koliku brzinu želite podijeliti s drugima. Potpuna kontrola je u vašim rukama.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q-icon">?</span>
+            <span>Koliki je domet WiFi točke?</span>
+          </div>
+          <p>Ovisi o vrsti antene, uređaju na drugoj strani, zgradama okolo i broju WiFi mreža u blizini. Tipično 50-200 metara u urbanim uvjetima.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q-icon">?</span>
+            <span>Koji router preporučate?</span>
+          </div>
+          <p>Bilo koji uređaj koji podržava OpenWrt firmware. Za početak preporučujemo TP-Link ili Ubiquiti uređaje - pristupačna cijena i vrlo dobre karakteristike.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q-icon">?</span>
+            <span>Kako ISP-ovi gledaju na ovo?</span>
+          </div>
+          <p>Nismo im konkurencija niti imamo veze s poslom kojeg obavljaju. Zajednica je nastala iz uvjerenja da je internet osnovno ljudsko pravo. Neki ISP-evi nas čak direktno podržavaju kroz sponzorstva.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q-icon">?</span>
+            <span>A mobilni operateri?</span>
+          </div>
+          <p>Mobilni operateri imaju problema s preopterećenjem mreža. Spremni smo na sve oblike suradnje jer vidimo potencijal za međusobno korisnu suradnju.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q-icon">?</span>
+            <span>Trebam li tehničko predznanje?</span>
+          </div>
+          <p>Ne! Glavni cilj projekta je doći do točke gdje predznanje više nije potrebno. Jednom kad server postoji, postavljanje nodova je lagano - samo uključite uređaj u struju.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="join">
+    <div class="container">
+      <h2>Spreman za priključenje?</h2>
+      <p>Postani dio zajednice koja vjeruje da internet treba biti slobodan i otvoren za sve. Budi dobar susjed!</p>
+      <a href="mailto:info@otvorenamreza.eu" class="btn btn-white">Javi nam se</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="#" class="logo">Otvorena<span style="color:white">Mreža</span></a>
+          <p>Slobodna i otvorena bežična mreža za sve. Projekt zajednice koja vjeruje da internet treba biti osnovno ljudsko pravo - dostupno svima bez obzira na socijalni status.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigacija</h4>
+          <ul>
+            <li><a href="#about">O projektu</a></li>
+            <li><a href="#how">Kako funkcionira</a></li>
+            <li><a href="#contribute">Uključi se</a></li>
+            <li><a href="#map">Karta mreže</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Zajednica</h4>
+          <ul>
+            <li><a href="https://github.com/wlanslovenija/nodewatcher" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://groups.google.com/g/otvorena-mreza" target="_blank" rel="noopener">Google Groups</a></li>
+            <li><a href="https://webchat.freenode.net/#otvorenamreza" target="_blank" rel="noopener">IRC Chat</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Kontakt</h4>
+          <ul>
+            <li><a href="mailto:info@otvorenamreza.eu">info@otvorenamreza.eu</a></li>
+            <li><a href="https://nodes.otvorenamreza.eu" target="_blank" rel="noopener">NodeWatcher</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Otvorena Mreža. Open source projekt zajednice.</p>
+        <a href="https://github.com/wlanslovenija/nodewatcher" target="_blank" rel="noopener">Izvorni kod na GitHubu</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav shadow on scroll
+    window.addEventListener('scroll', function() {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Mobile menu toggle
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('active') ? 'hidden' : '';
+    }
+  </script>
+
+</body>
+</html>
