@@ -484,25 +484,71 @@
 
     .testimonials-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       gap: 28px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .testimonial-featured {
+      background: var(--primary-light);
+      border-left: 4px solid var(--primary);
+      padding: 40px 44px;
+      border-radius: var(--radius);
+      position: relative;
+    }
+
+    .testimonial-featured::before {
+      content: '\201C';
+      font-size: 5rem;
+      color: var(--primary);
+      opacity: 0.25;
+      position: absolute;
+      top: 8px;
+      left: 28px;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .testimonial-featured p {
+      font-size: 1.15rem;
+      color: var(--dark);
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+      padding-top: 20px;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-featured .testimonial-author {
+      color: var(--gray);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .testimonials-small {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 900px;
+      margin: 24px auto 0;
     }
 
     .testimonial-card {
       background: var(--light);
-      padding: 32px;
+      padding: 28px;
       border-radius: var(--radius);
       position: relative;
     }
 
     .testimonial-card::before {
       content: '\201C';
-      font-size: 4rem;
+      font-size: 3.5rem;
       color: var(--primary);
-      opacity: 0.3;
+      opacity: 0.2;
       position: absolute;
-      top: 12px;
-      left: 24px;
+      top: 8px;
+      left: 20px;
       line-height: 1;
       font-family: Georgia, serif;
     }
@@ -510,11 +556,11 @@
     .testimonial-card p {
       font-style: italic;
       color: var(--dark);
-      font-size: 1.05rem;
-      margin-bottom: 16px;
+      font-size: 1rem;
+      margin-bottom: 12px;
       position: relative;
       z-index: 1;
-      padding-top: 24px;
+      padding-top: 20px;
     }
 
     .testimonial-author {
@@ -791,7 +837,7 @@
 
       .features-grid,
       .contribute-grid,
-      .testimonials-grid {
+      .testimonials-small {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -846,7 +892,7 @@
 
       .features-grid,
       .contribute-grid,
-      .testimonials-grid {
+      .testimonials-small {
         grid-template-columns: 1fr;
       }
 
@@ -1145,17 +1191,19 @@
         <p>Glasovi iz zajednice koja vjeruje u otvoreni internet.</p>
       </div>
       <div class="testimonials-grid">
+        <div class="testimonial-featured">
+          <p>Moja susjeda je umirovljenica s malom mirovinom i nije si mogla priuštiti stalni priključak na internet. Cijeli život je radila i nikad nije imala prilike putovati &mdash; najveća radost joj je bila gledati putopise na YouTubeu. Nas nekoliko volontera u kvartu smo podijelili svoj internet preko Otvorene Mreže. Napravili smo to na siguran način &mdash; preko VPN-a, bez dijeljenja svojih lokalnih IP adresa, pa su i naša računala ostala zaštićena. Nju to nije koštalo ništa, a ni nas. A njoj je to značilo cijeli jedan svijet.</p>
+          <span class="testimonial-author">Valent, volonter iz Osijeka</span>
+        </div>
+      </div>
+      <div class="testimonials-small">
         <div class="testimonial-card">
-          <p>Internet bi trebao biti osnovno ljudsko pravo! Otvorena Mreža to čini mogućim u mom susjedstvu.</p>
-          <span class="testimonial-author">Korisnik iz Zagreba</span>
+          <p>Internet bi trebao biti osnovno ljudsko pravo. Otvorena Mreža to čini mogućim &mdash; besplatno i sigurno.</p>
+          <span class="testimonial-author">Korisnik mreže</span>
         </div>
         <div class="testimonial-card">
-          <p>Zašto ne bismo besplatno podijelili internet sa svima? Postavljanje je bilo jednostavnije nego što sam očekivao.</p>
-          <span class="testimonial-author">Volonter iz Osijeka</span>
-        </div>
-        <div class="testimonial-card">
-          <p>Ideja o slobodnim mrežama postoji odavno, ali Otvorena Mreža ju je konačno učinila pristupačnom svima.</p>
-          <span class="testimonial-author">Operator noda iz Rijeke</span>
+          <p>Postavljanje je bilo jednostavnije nego što sam očekivao. Router u struju, firmware, gotovo. Sad cijeli kvart ima internet.</p>
+          <span class="testimonial-author">Volonter operater</span>
         </div>
       </div>
     </div>
