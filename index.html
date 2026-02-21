@@ -435,6 +435,112 @@
       line-height: 1.6;
     }
 
+    /* ─── Equipment ─── */
+    .equipment {
+      padding: 100px 0;
+      background: var(--light);
+    }
+
+    .equipment-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+
+    .equipment-table thead {
+      background: var(--dark);
+      color: white;
+    }
+
+    .equipment-table th {
+      padding: 16px 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-align: left;
+      letter-spacing: 0.02em;
+    }
+
+    .equipment-table td {
+      padding: 14px 20px;
+      font-size: 0.93rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      color: var(--gray);
+    }
+
+    .equipment-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .equipment-table tbody tr:hover {
+      background: var(--primary-light);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .badge-easy {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .badge-medium {
+      background: #fef9c3;
+      color: #854d0e;
+    }
+
+    .badge-advanced {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .badge-preinstalled {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    .equipment-note {
+      background: var(--white);
+      border-left: 4px solid var(--primary);
+      padding: 20px 24px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      box-shadow: var(--shadow);
+    }
+
+    .equipment-note p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .equipment-note strong {
+      color: var(--dark);
+    }
+
+    @media (max-width: 768px) {
+      .equipment-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .equipment-table th,
+      .equipment-table td {
+        white-space: nowrap;
+        padding: 12px 14px;
+        font-size: 0.85rem;
+      }
+    }
+
     /* ─── Contribute ─── */
     .contribute {
       padding: 100px 0;
@@ -949,6 +1055,7 @@
       <ul class="nav-links">
         <li><a href="#about">O projektu</a></li>
         <li><a href="#how">Kako funkcionira</a></li>
+        <li><a href="#equipment">Oprema</a></li>
         <li><a href="#contribute">Uključi se</a></li>
         <li><a href="#map">Karta</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -965,6 +1072,7 @@
     <button class="mobile-close" onclick="toggleMenu()">&times;</button>
     <a href="#about" onclick="toggleMenu()">O projektu</a>
     <a href="#how" onclick="toggleMenu()">Kako funkcionira</a>
+    <a href="#equipment" onclick="toggleMenu()">Oprema</a>
     <a href="#contribute" onclick="toggleMenu()">Uključi se</a>
     <a href="#map" onclick="toggleMenu()">Karta</a>
     <a href="#faq" onclick="toggleMenu()">FAQ</a>
@@ -1154,6 +1262,84 @@
     </div>
   </section>
 
+  <!-- Equipment -->
+  <section class="equipment" id="equipment">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Oprema</span>
+        <h2>Podržani routeri</h2>
+        <p>Popis routera koji rade s OpenWrt firmwareom. Biraj prema budžetu i razini iskustva.</p>
+      </div>
+
+      <table class="equipment-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>WiFi</th>
+            <th>Cijena (nova)</th>
+            <th>Instalacija</th>
+            <th>Napomena</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>GL.iNet Mango (GL-MT300N-V2)</strong></td>
+            <td>WiFi 4</td>
+            <td>~33 EUR</td>
+            <td><span class="badge badge-preinstalled">OpenWrt tvornički</span></td>
+            <td>Najjednostavniji start. Mali travel router, OpenWrt dolazi instaliran. Idealan za testiranje.</td>
+          </tr>
+          <tr>
+            <td><strong>GL.iNet Opal (GL-SFT1200)</strong></td>
+            <td>WiFi 5</td>
+            <td>~39 EUR</td>
+            <td><span class="badge badge-preinstalled">OpenWrt tvornički</span></td>
+            <td>Bolji domet od Manga. Dual-band, 1200 Mbps. OpenWrt dolazi instaliran.</td>
+          </tr>
+          <tr>
+            <td><strong>TP-Link Archer C6 v2/v3</strong></td>
+            <td>WiFi 5</td>
+            <td>~32 EUR</td>
+            <td><span class="badge badge-easy">Jednostavno</span></td>
+            <td>Odličan omjer cijene i kvalitete. Gigabit portovi, 4 antene. Pazi: v4 NIJE podržan!</td>
+          </tr>
+          <tr>
+            <td><strong>Cudy WR3000</strong></td>
+            <td>WiFi 6</td>
+            <td>~45 EUR</td>
+            <td><span class="badge badge-easy">Jednostavno</span></td>
+            <td>WiFi 6 za malu cijenu. Cudy daje prijelazni firmware za lako flashanje kroz web sučelje.</td>
+          </tr>
+          <tr>
+            <td><strong>GL.iNet Beryl AX (GL-MT3000)</strong></td>
+            <td>WiFi 6</td>
+            <td>~101 EUR</td>
+            <td><span class="badge badge-preinstalled">OpenWrt tvornički</span></td>
+            <td>Premium opcija. 2.5G WAN port, VPN klijent ugrađen, džepna veličina.</td>
+          </tr>
+          <tr>
+            <td><strong>GL.iNet Slate AX (GL-AXT1800)</strong></td>
+            <td>WiFi 6</td>
+            <td>~123 EUR</td>
+            <td><span class="badge badge-preinstalled">OpenWrt tvornički</span></td>
+            <td>Snažan WiFi 6 router s OpenWrt-om. Odličan za pokrivanje većeg prostora.</td>
+          </tr>
+          <tr>
+            <td><strong>Xiaomi AX3000T</strong></td>
+            <td>WiFi 6</td>
+            <td>~42 EUR</td>
+            <td><span class="badge badge-advanced">Napredno</span></td>
+            <td>Jeftin i moćan, ALI zahtijeva exploit za instalaciju OpenWrt-a. Samo za iskusne korisnike!</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="equipment-note">
+        <p><strong>Rabljeni routeri?</strong> Hrvatski ISP-ovi (HT, A1, Iskon, Telemach) redovito zamjenjuju routere kod korisnika. Nažalost, većina ISP routera (Iskratel Innbox, ZTE, Nokia, Speedport) <strong>ne podržava OpenWrt</strong>. Ako kupuješ rabljeni router, provjeri je li na <a href="https://openwrt.org/toh/start" target="_blank" rel="noopener" style="color: var(--primary);">OpenWrt popisu podržanih uređaja</a> prije kupnje.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Contribute -->
   <section class="contribute" id="contribute">
     <div class="container">
@@ -1268,7 +1454,7 @@
             <span class="faq-q-icon">?</span>
             <span>Koji router preporučate?</span>
           </div>
-          <p>Bilo koji uređaj koji podržava OpenWrt firmware. Za početak preporučujemo TP-Link ili Ubiquiti uređaje - pristupačna cijena i vrlo dobre karakteristike.</p>
+          <p>Pogledaj <a href="#equipment" style="color: var(--primary);">popis podržanih routera</a> iznad. Za najjednostavniji start preporučujemo GL.iNet routere koji dolaze s OpenWrt-om tvornički, a za najbolji omjer cijene TP-Link Archer C6 v2/v3 (oko 32 EUR).</p>
         </div>
         <div class="faq-item">
           <div class="faq-question">
